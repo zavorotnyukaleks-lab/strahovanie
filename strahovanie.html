@@ -1,0 +1,1135 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700&family=Golos+Text:wght@400;500;600&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#1A3C6E;--blue-mid:#1E4A8A;--blue-light:#2563B0;
+  --orange:#F97316;--orange-light:#FB923C;
+  --gold:#F59E0B;
+  --bg:#F0F4FA;--white:#fff;
+  --text:#0F1E35;--muted:#5A6A82;
+  --border:#DDE4EF;
+  --r:14px;--r-lg:20px;
+}
+body{font-family:'Golos Text',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+
+/* NAV — только логотип и кнопка */
+nav{position:sticky;top:0;z-index:200;background:var(--blue);padding:0 40px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Unbounded',sans-serif;font-size:15px;font-weight:700;color:#fff;letter-spacing:-.02em}
+.nav-logo span{color:var(--orange)}
+.nav-cta{background:var(--orange);color:#fff;border:none;border-radius:50px;padding:10px 22px;font-size:13px;font-family:'Golos Text',sans-serif;font-weight:600;cursor:pointer;transition:all .2s}
+.nav-cta:hover{background:var(--orange-light);transform:translateY(-1px)}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-mid) 60%,#0F2D5A 100%);padding:56px 40px 72px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-80px;right:-60px;width:480px;height:480px;background:radial-gradient(circle,rgba(249,115,22,.15) 0%,transparent 65%);border-radius:50%}
+.hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.hero-top{margin-bottom:36px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,.2);border:1px solid rgba(249,115,22,.4);border-radius:50px;padding:6px 14px;margin-bottom:18px}
+.hero-badge-dot{width:7px;height:7px;background:var(--orange);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(1.3)}}
+.hero-badge span{font-size:12px;color:var(--orange);font-weight:600;letter-spacing:.04em}
+.hero-title-row{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end}
+.hero h1{font-family:'Unbounded',sans-serif;font-size:40px;font-weight:700;color:#fff;line-height:1.15;letter-spacing:-.03em}
+.hero h1 em{color:var(--orange);font-style:normal}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.65);line-height:1.75;padding-bottom:4px}
+.hero-bottom{display:grid;grid-template-columns:1fr 480px;gap:40px;align-items:start}
+.hero-stats{display:flex;flex-direction:column;gap:16px;padding-top:8px}
+.hero-stat-item{display:flex;align-items:center;gap:16px;padding:14px 18px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:var(--r)}
+.hero-stat-val{font-family:'Unbounded',sans-serif;font-size:22px;font-weight:700;color:#fff;white-space:nowrap}
+.hero-stat-lbl{font-size:13px;color:rgba(255,255,255,.5)}
+
+/* FORM */
+.form-card{background:#fff;border-radius:22px;padding:28px 32px;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.form-steps{display:flex;align-items:center;margin-bottom:22px}
+.fstep{display:flex;align-items:center;gap:7px;flex-shrink:0}
+.fstep-num{width:26px;height:26px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-family:'Unbounded',sans-serif;font-size:11px;font-weight:700;color:#fff;flex-shrink:0}
+.fstep-num.inactive{background:var(--border);color:var(--muted)}
+.fstep-label{font-size:12px;font-weight:500;color:var(--text)}
+.fstep-label.inactive{color:var(--muted)}
+.fstep-line{flex:1;height:1px;background:var(--border);margin:0 7px}
+.form-title{font-family:'Unbounded',sans-serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px}
+.form-hint{font-size:13px;color:var(--muted);margin-bottom:18px;line-height:1.5}
+.fg input{width:100%;padding:13px 15px;border:1.5px solid var(--border);border-radius:10px;font-size:15px;font-family:'Golos Text',sans-serif;color:var(--text);background:var(--bg);outline:none;transition:border-color .2s;margin-bottom:14px}
+.fg input:focus{border-color:var(--orange);background:#fff}
+.form-docs{display:flex;gap:16px;margin-bottom:18px}
+.fdoc{font-size:12px;color:var(--blue-light);text-decoration:underline;cursor:pointer;transition:color .2s}
+.fdoc:hover{color:var(--orange)}
+.form-bottom-row{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.form-disc{font-size:11px;color:var(--muted);line-height:1.5;flex:1}
+.form-disc a{color:var(--orange);text-decoration:underline;cursor:pointer}
+.btn-submit{padding:13px 22px;background:var(--orange);color:#fff;border:none;border-radius:50px;font-family:'Unbounded',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap}
+.btn-submit:hover{background:var(--orange-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(249,115,22,.4)}
+
+/* STICKY TABS — центрированные с цветом */
+.sticky-tabs{position:sticky;top:64px;z-index:100;background:var(--blue);padding:0 40px}
+.tabs-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:center}
+.stab{padding:15px 22px;font-size:13px;font-weight:500;color:rgba(255,255,255,.55);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:0;transition:all .2s;white-space:nowrap}
+.stab:hover{color:#fff}
+.stab.active{color:var(--orange);border-bottom-color:var(--orange);font-weight:600}
+
+.sw{max-width:1100px;margin:0 auto;padding:0 40px}
+.sec{padding:64px 0}
+.stag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--orange);background:rgba(249,115,22,.1);padding:5px 12px;border-radius:50px;margin-bottom:12px}
+.stitle{font-family:'Unbounded',sans-serif;font-size:28px;font-weight:700;color:var(--text);letter-spacing:-.03em;margin-bottom:40px;line-height:1.25}
+
+/* INFO */
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.ic{background:#fff;border-radius:var(--r-lg);padding:28px 26px;border:1.5px solid var(--border);transition:all .25s;display:flex;flex-direction:column}
+.ic:hover{border-color:var(--orange);transform:translateY(-4px);box-shadow:0 12px 32px rgba(249,115,22,.12)}
+.ic-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:22px;flex-shrink:0}
+.ib{background:rgba(26,60,110,.08)}.io{background:rgba(249,115,22,.1)}.ig{background:rgba(245,158,11,.1)}
+.ic-t{font-weight:700;font-size:15px;color:var(--text);margin-bottom:8px}
+.ic-d{font-size:13px;color:var(--muted);line-height:1.7}
+
+/* FLOATING CTA */
+.float-cta{position:fixed;bottom:28px;right:28px;z-index:300;background:var(--orange);color:#fff;border:none;border-radius:50px;padding:14px 26px;font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 8px 28px rgba(249,115,22,.5);transition:all .25s;display:flex;align-items:center;gap:8px}
+.float-cta:hover{background:var(--orange-light);transform:translateY(-3px);box-shadow:0 14px 36px rgba(249,115,22,.55)}
+.float-cta-dot{width:8px;height:8px;border-radius:50%;background:#fff;animation:pulse 2s infinite}
+
+/* LOYALTY — без подзаголовка про страховые случаи */
+.loyalty{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-light) 100%);border-radius:var(--r-lg);padding:40px;overflow:hidden;position:relative;margin-top:48px}
+.loyalty::before{content:'';position:absolute;top:-40px;right:-40px;width:280px;height:280px;background:radial-gradient(circle,rgba(249,115,22,.2) 0%,transparent 65%);border-radius:50%}
+.loyalty-t{font-family:'Unbounded',sans-serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:28px;position:relative;z-index:1}
+.lsteps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative;z-index:1}
+.ls{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:var(--r);padding:18px 14px;text-align:center;transition:background .2s}
+.ls:hover{background:rgba(255,255,255,.14)}
+.ls-y{font-family:'Unbounded',sans-serif;font-size:12px;font-weight:700;color:var(--orange);margin-bottom:8px}
+.ls-e{font-size:20px;margin-bottom:7px}
+.ls-t{font-size:13px;font-weight:600;color:#fff;margin-bottom:3px}
+.ls-d{font-size:11px;color:rgba(255,255,255,.45);line-height:1.5}
+
+/* CONDITIONS */
+.ctabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.ctab{padding:8px 18px;border-radius:50px;border:1.5px solid var(--border);font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;transition:all .2s;background:#fff}
+.ctab.active,.ctab:hover{border-color:var(--blue);color:var(--blue);background:rgba(26,60,110,.06)}
+.cp{display:none}.cp.active{display:block}
+.cl{list-style:none;display:flex;flex-direction:column}
+.ci{display:flex;align-items:flex-start;gap:12px;padding:13px 0;border-bottom:1px solid var(--border)}
+.ci:last-child{border-bottom:none}
+.cd{width:8px;height:8px;border-radius:50%;background:var(--orange);flex-shrink:0;margin-top:5px}
+.ct{font-size:14px;color:var(--text);line-height:1.6}
+.cn{font-size:12px;color:var(--muted);margin-top:16px;padding:14px 16px;background:rgba(245,158,11,.08);border-radius:10px;border-left:3px solid var(--gold);line-height:1.6}
+
+/* DOCS BLOCK в условиях */
+.docs-row{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
+.doc-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#fff;border:1.5px solid var(--border);border-radius:50px;font-size:13px;font-weight:500;color:var(--blue);cursor:pointer;transition:all .2s;text-decoration:none}
+.doc-btn:hover{border-color:var(--orange);color:var(--orange);background:rgba(249,115,22,.04)}
+.doc-icon{font-size:15px}
+
+/* PLANS */
+.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pl{background:#fff;border-radius:var(--r-lg);padding:26px;border:2px solid var(--border);position:relative;transition:transform .2s}
+.pl:hover{transform:translateY(-4px)}
+.pl.ft{border-color:var(--orange);background:var(--blue)}
+.pl-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--orange);color:#fff;font-size:11px;font-weight:700;padding:4px 14px;border-radius:50px;white-space:nowrap}
+.pl-name{font-family:'Unbounded',sans-serif;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:7px;letter-spacing:.04em}
+.pl.ft .pl-name{color:rgba(255,255,255,.45)}
+.pl-price{font-family:'Unbounded',sans-serif;font-size:30px;font-weight:700;color:var(--text);line-height:1;margin-bottom:3px}
+.pl.ft .pl-price{color:#fff}
+.pl-per{font-size:13px;color:var(--muted);margin-bottom:16px}
+.pl.ft .pl-per{color:rgba(255,255,255,.4)}
+.pl-feats{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.pl-feats li{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+.pl.ft .pl-feats li{color:rgba(255,255,255,.7)}
+.pfd{width:6px;height:6px;border-radius:50%;background:var(--orange);flex-shrink:0}
+.pl-btn{width:100%;padding:11px;border-radius:50px;border:2px solid var(--border);background:transparent;font-family:'Golos Text',sans-serif;font-size:13px;font-weight:600;color:var(--text);cursor:pointer;transition:all .2s}
+.pl-btn:hover{border-color:var(--orange);color:var(--orange)}
+.pl.ft .pl-btn{background:var(--orange);border-color:var(--orange);color:#fff}
+.pl.ft .pl-btn:hover{background:var(--orange-light)}
+.plan-cta-row{margin-top:28px;padding:22px 28px;background:rgba(249,115,22,.06);border:1.5px solid rgba(249,115,22,.2);border-radius:var(--r-lg);display:flex;align-items:center;justify-content:space-between;gap:20px}
+.pct-title{font-weight:600;font-size:15px;color:var(--text);margin-bottom:3px}
+.pct-sub{font-size:13px;color:var(--muted)}
+.plan-cta-btn{background:var(--orange);color:#fff;border:none;border-radius:50px;padding:13px 28px;font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap}
+.plan-cta-btn:hover{background:var(--orange-light);transform:translateY(-2px)}
+
+/* AI */
+.ai-block{background:#fff;border-radius:var(--r-lg);border:2px solid var(--border);overflow:hidden;margin-top:40px}
+.ai-hdr{background:linear-gradient(90deg,var(--blue) 0%,var(--blue-light) 100%);padding:15px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.ai-hdr-l{display:flex;align-items:center;gap:12px}
+.ai-av{width:42px;height:42px;border-radius:50%;background:rgba(249,115,22,.25);border:2px solid rgba(249,115,22,.5);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.ai-name{font-weight:600;font-size:14px;color:#fff}
+.ai-st{font-size:12px;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:5px;margin-top:1px}
+.ai-dot{width:6px;height:6px;background:#22C55E;border-radius:50%;animation:pulse 2s infinite}
+.call-btn{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:50px;padding:8px 16px;color:#fff;font-size:13px;font-weight:600;font-family:'Golos Text',sans-serif;cursor:pointer;transition:all .2s;white-space:nowrap;flex-shrink:0}
+.call-btn:hover{background:rgba(255,255,255,.22)}
+.ai-chat{padding:18px 22px;max-height:240px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
+.am{max-width:80%;padding:11px 15px;border-radius:14px;font-size:13px;line-height:1.6}
+.am.bot{background:var(--bg);color:var(--text);border-radius:14px 14px 14px 4px;align-self:flex-start}
+.am.user{background:var(--orange);color:#fff;border-radius:14px 14px 4px 14px;align-self:flex-end}
+.ai-chips{padding:0 22px 12px;display:flex;gap:7px;flex-wrap:wrap}
+.ai-chip{padding:6px 13px;background:rgba(26,60,110,.06);border:1px solid var(--border);border-radius:50px;font-size:12px;color:var(--blue);cursor:pointer;transition:all .2s}
+.ai-chip:hover{background:rgba(249,115,22,.1);border-color:var(--orange);color:var(--orange)}
+.ai-row{border-top:1px solid var(--border);padding:13px 22px;display:flex;gap:10px;align-items:center}
+.ai-inp{flex:1;padding:10px 15px;border:1.5px solid var(--border);border-radius:50px;font-size:13px;font-family:'Golos Text',sans-serif;outline:none;transition:border-color .2s;background:var(--bg)}
+.ai-inp:focus{border-color:var(--orange)}
+.ai-snd{background:var(--orange);color:#fff;border:none;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;flex-shrink:0}
+.ai-snd:hover{background:var(--orange-light);transform:scale(1.05)}
+
+/* HOW */
+.how-bg{background:var(--blue);padding:64px 0}
+.how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative;margin-bottom:32px}
+.how-steps::before{content:'';position:absolute;top:27px;left:16%;right:16%;height:1px;background:rgba(249,115,22,.3)}
+.hs{text-align:center;padding:0 12px}
+.hn{width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.08);border:2px solid rgba(249,115,22,.5);display:flex;align-items:center;justify-content:center;font-family:'Unbounded',sans-serif;font-size:17px;font-weight:700;color:var(--orange);margin:0 auto 16px;position:relative;z-index:1}
+.ht{font-weight:600;font-size:14px;color:#fff;margin-bottom:6px}
+.hd{font-size:12px;color:rgba(255,255,255,.45);line-height:1.6}
+.how-div{border:none;border-top:1px solid rgba(255,255,255,.1);margin:28px 0}
+.how-alt{text-align:center}
+.how-alt-lbl{font-size:13px;color:rgba(255,255,255,.45);margin-bottom:10px}
+.how-alt-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:50px;padding:10px 22px;color:rgba(255,255,255,.75);font-size:13px;font-weight:500;font-family:'Golos Text',sans-serif;cursor:pointer;transition:all .2s}
+.how-alt-btn:hover{background:rgba(255,255,255,.15);color:#fff}
+
+/* TRUST */
+.tg{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:64px}
+.ti{text-align:center;padding:26px 16px;background:#fff;border-radius:var(--r);border:1.5px solid var(--border)}
+.tv{font-family:'Unbounded',sans-serif;font-size:26px;font-weight:700;color:var(--blue)}
+.tl{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.4;margin-bottom:8px}
+.tsrc{font-size:11px;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:4px}
+.tsrc a{color:var(--blue-light);text-decoration:none;font-weight:500}
+.tsrc a:hover{color:var(--orange);text-decoration:underline}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.fi{background:#fff;border-radius:var(--r);border:1.5px solid var(--border);overflow:hidden}
+.fq{padding:17px 20px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:600;font-size:14px;color:var(--text);gap:16px}
+.fq:hover{color:var(--orange)}
+.fa-arr{font-size:17px;color:var(--orange);transition:transform .25s;flex-shrink:0}
+.fa{display:none;padding:0 20px 16px;font-size:13px;color:var(--muted);line-height:1.7}
+.fi.open .fa{display:block}
+.fi.open .fa-arr{transform:rotate(45deg)}
+.faq-section-label{font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);margin:28px 0 12px;text-transform:uppercase}
+
+/* FOOTER */
+.ft-cta{background:linear-gradient(135deg,var(--orange) 0%,#EA580C 100%);padding:56px 40px;text-align:center}
+.ft-cta h2{font-family:'Unbounded',sans-serif;font-size:26px;font-weight:700;color:#fff;margin-bottom:10px;letter-spacing:-.02em}
+.ft-cta p{font-size:14px;color:rgba(255,255,255,.75);margin-bottom:24px}
+.ft-cta-btn{display:inline-block;background:#fff;color:var(--orange);padding:14px 36px;border-radius:50px;font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;cursor:pointer;border:none;transition:all .2s}
+.ft-cta-btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.2)}
+footer{background:var(--blue);padding:32px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.fl{font-family:'Unbounded',sans-serif;font-size:14px;font-weight:700;color:#fff}
+.fl span{color:var(--orange)}
+.flinks{display:flex;gap:18px;flex-wrap:wrap}
+.flinks a{font-size:12px;color:rgba(255,255,255,.4);text-decoration:none}
+.flinks a:hover{color:rgba(255,255,255,.8)}
+.fc{font-size:12px;color:rgba(255,255,255,.28)}
+
+/* MODAL */
+.mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;align-items:center;justify-content:center}
+.mo.open{display:flex}
+.md{background:#fff;border-radius:var(--r-lg);padding:32px;max-width:400px;width:90%;text-align:center}
+.md h3{font-family:'Unbounded',sans-serif;font-size:17px;font-weight:700;color:var(--text);margin-bottom:8px}
+.md p{font-size:14px;color:var(--muted);margin-bottom:20px;line-height:1.6}
+.md-ph{font-family:'Unbounded',sans-serif;font-size:24px;font-weight:700;color:var(--blue);margin-bottom:5px}
+.md-hr{font-size:13px;color:var(--muted);margin-bottom:22px}
+.md-cl{background:var(--bg);border:none;border-radius:50px;padding:10px 24px;font-size:13px;font-family:'Golos Text',sans-serif;color:var(--muted);cursor:pointer;transition:all .2s}
+.md-cl:hover{background:var(--border)}
+
+/* MULTI-STEP FORM */
+.form-step-panel{display:none}
+.form-step-panel.active{display:block}
+.done-step{background:var(--blue)!important;color:#fff!important}
+.form-section-t{font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:12px;margin-top:4px}
+.f-inp{width:100%;padding:10px 13px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:'Golos Text',sans-serif;color:var(--text);background:var(--bg);outline:none;transition:border-color .2s}
+.f-inp:focus{border-color:var(--orange);background:#fff}
+.f-label{font-size:11px;font-weight:600;color:var(--muted);margin-bottom:4px;display:block;letter-spacing:.03em}
+.f-hint{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.4}
+.f-field-wrap{display:flex;flex-direction:column}
+.f-radio-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:8px}
+.f-radio{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--text);cursor:pointer}
+.f-radio input{accent-color:var(--orange);width:16px;height:16px}
+.f-checkbox{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text);cursor:pointer;margin-top:6px}
+.f-checkbox input{accent-color:var(--orange);width:15px;height:15px;flex-shrink:0}
+.f-checkbox-consent{display:flex;align-items:flex-start;gap:10px;font-size:12px;color:var(--muted);line-height:1.55;cursor:pointer;padding:10px 14px;background:var(--bg);border-radius:10px;border:1.5px solid var(--border);transition:border-color .2s}
+.f-checkbox-consent input{accent-color:var(--orange);width:15px;height:15px;flex-shrink:0;margin-top:2px}
+.f-checkbox-consent a{color:var(--blue-light);text-decoration:underline}
+.plan-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px}
+.plan-c{border:2px solid var(--border);border-radius:12px;padding:14px;cursor:pointer;position:relative;transition:all .2s;background:#fff;min-width:0}
+.plan-c:hover{border-color:var(--orange)}
+.plan-c.active{border-color:var(--orange);background:rgba(249,115,22,.04)}
+.plan-c-badge{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--orange);color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:50px;white-space:nowrap}
+.plan-c-name{font-family:'Unbounded',sans-serif;font-size:12px;font-weight:700;color:var(--text);margin-bottom:8px}
+.plan-c-row{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--muted);margin-bottom:4px;gap:4px}
+.plan-c-tag{background:rgba(37,99,176,.12);color:var(--blue-light);padding:2px 7px;border-radius:50px;font-weight:600;white-space:nowrap;font-size:11px}
+.plan-c-link{font-size:11px;color:var(--blue-light);text-decoration:underline;display:block;margin:6px 0 8px}
+.plan-c-price{font-family:'Unbounded',sans-serif;font-size:14px;font-weight:700;color:var(--text)}
+.btn-back{background:transparent;border:1.5px solid var(--border);color:var(--muted);border-radius:50px;padding:10px 20px;font-size:13px;font-family:'Golos Text',sans-serif;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-back:hover{border-color:var(--blue);color:var(--blue)}
+.btn-agent{background:rgba(26,60,110,.08);border:1.5px solid rgba(26,60,110,.2);color:var(--blue);border-radius:50px;padding:10px 16px;font-size:12px;font-family:'Golos Text',sans-serif;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap}
+.btn-agent:hover{background:rgba(26,60,110,.15)}
+.btn-gosuslugi{display:inline-flex;align-items:center;gap:8px;background:#EEF4FF;border:1.5px solid #C7D9F5;color:#0d47a1;border-radius:50px;padding:9px 16px;font-size:12px;font-family:'Golos Text',sans-serif;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-gosuslugi:hover{background:#D9EAFF}
+.plan-c-row-lbl{font-size:11px;color:var(--muted)}
+.plan-c-tag-full{background:rgba(37,99,176,.12);color:var(--blue-light);padding:3px 8px;border-radius:6px;font-weight:700;font-size:12px;display:inline-block;margin-bottom:6px}
+.plan-c.active .plan-c-tag-full{background:rgba(249,115,22,.15);color:var(--orange)}
+
+/* PLAN DETAIL MODAL */
+.plan-detail-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;align-items:center;justify-content:center}
+.plan-detail-modal.open{display:flex}
+.plan-detail-body{background:#fff;border-radius:var(--r-lg);padding:32px;max-width:520px;width:92%}
+.plan-detail-body h3{font-family:'Unbounded',sans-serif;font-size:17px;font-weight:700;color:var(--text);margin-bottom:16px}
+.plan-detail-body table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:18px}
+.plan-detail-body table td{padding:8px 0;border-bottom:1px solid var(--border);color:var(--muted)}
+.plan-detail-body table td:last-child{text-align:right;font-weight:600;color:var(--text)}
+.plan-detail-body .btn-close-detail{background:var(--bg);border:none;border-radius:50px;padding:10px 24px;font-size:13px;font-family:'Golos Text',sans-serif;color:var(--muted);cursor:pointer;transition:all .2s}
+.plan-detail-body .btn-close-detail:hover{background:var(--border)}
+</style>
+
+<!-- AGENT MODAL -->
+<div class="mo" id="agent-modal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="md" style="max-width:460px;width:94%">
+    <div style="font-size:30px;margin-bottom:8px">📞</div>
+    <h3 style="margin-bottom:6px">Оставьте заявку на звонок</h3>
+    <p style="margin-bottom:16px">Агент перезвонит в удобное время, поможет выбрать полис и ответит на все вопросы</p>
+    <div style="display:flex;flex-direction:column;gap:10px;text-align:left;margin-bottom:16px">
+      <div class="f-field-wrap"><label class="f-label">Город</label><input type="text" class="f-inp" placeholder="г. Москва" id="ag-city"></div>
+      <div class="f-field-wrap"><label class="f-label">ФИО*</label><input type="text" class="f-inp" placeholder="Иванов Иван Иванович" id="ag-fio"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div class="f-field-wrap"><label class="f-label">Электронная почта*</label><input type="email" class="f-inp" placeholder="mail@example.com" id="ag-email"></div>
+        <div class="f-field-wrap"><label class="f-label">Номер телефона*</label><input type="tel" class="f-inp" placeholder="+7 (___) ___-__-__" id="ag-tel"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div class="f-field-wrap"><label class="f-label">Дата звонка</label><input type="date" class="f-inp" id="ag-date"></div>
+        <div class="f-field-wrap"><label class="f-label">Время звонка*</label>
+          <select class="f-inp" id="ag-time">
+            <option value="">Выберите время</option>
+            <option>9:00–10:00</option><option>10:00–12:00</option><option>12:00–14:00</option>
+            <option>14:00–16:00</option><option>16:00–18:00</option><option>18:00–20:00</option><option>20:00–21:00</option>
+          </select>
+        </div>
+      </div>
+      <details><summary style="font-size:13px;color:var(--blue-light);font-weight:500;cursor:pointer;list-style:none;user-select:none">Добавить комментарий ▾</summary>
+        <textarea class="f-inp" rows="3" placeholder="Ваш комментарий..." style="margin-top:8px;resize:none"></textarea>
+      </details>
+      <label class="f-checkbox-consent"><input type="checkbox" id="ag-chk1"><span>Даю <a href="#" onclick="return false">согласие</a> на обработку персональных данных</span></label>
+      <label class="f-checkbox-consent"><input type="checkbox" id="ag-chk2"><span>Даю <a href="#" onclick="return false">согласие</a> на получение рекламных и информационных материалов</span></label>
+    </div>
+    <div style="display:flex;gap:10px">
+      <button class="btn-back" onclick="document.getElementById('agent-modal').classList.remove('open')" style="flex:1">Отмена</button>
+      <button class="btn-submit" onclick="submitAgentForm()" style="flex:2">Отправить заявку</button>
+    </div>
+  </div>
+</div>
+<nav>
+  <div class="nav-logo">Защита<span>Дом</span></div>
+</nav>
+
+<!-- FLOATING CTA -->
+<button class="float-cta" onclick="scrollToForm()">
+  <span class="float-cta-dot"></span>Рассчитать стоимость
+</button>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-top">
+      <div class="hero-badge"><div class="hero-badge-dot"></div><span>ОНЛАЙН ЗА 5 МИНУТ</span></div>
+      <div class="hero-title-row">
+        <h1>Защита квартиры<br>и дома —<br><em>просто и честно</em></h1>
+        <p class="hero-sub">Страхование имущества, отделки и ответственности перед соседями. Сами выбирайте нужные вам покрытия или берите готовый пакет.</p>
+      </div>
+    </div>
+    <div class="hero-bottom">
+      <div class="hero-stats">
+        <div class="hero-stat-item"><div class="hero-stat-val">от 1 500 ₽</div><div class="hero-stat-lbl">стоимость полиса в год</div></div>
+        <div class="hero-stat-item"><div class="hero-stat-val">до 50 млн ₽</div><div class="hero-stat-lbl">максимальная страховая выплата</div></div>
+        <div class="hero-stat-item"><div class="hero-stat-val">5 минут</div><div class="hero-stat-lbl">время оформления онлайн</div></div>
+        <div class="hero-stat-item"><div class="hero-stat-val">3 дня</div><div class="hero-stat-lbl">средний срок выплаты</div></div>
+      </div>
+      <div id="form-top">
+        <div class="form-card" id="fc-main">
+
+          <!-- ШАГ 1: АДРЕС -->
+          <div id="step-1" class="form-step-panel active">
+            <div class="form-steps">
+              <div class="fstep"><div class="fstep-num" id="sn1">1</div><span class="fstep-label">Адрес</span></div>
+              <div class="fstep-line"></div>
+              <div class="fstep"><div class="fstep-num inactive" id="sn2">2</div><span class="fstep-label inactive">Стоимость</span></div>
+              <div class="fstep-line"></div>
+              <div class="fstep"><div class="fstep-num inactive" id="sn3">3</div><span class="fstep-label inactive">Документы</span></div>
+              <div class="fstep-line"></div>
+              <div class="fstep"><div class="fstep-num inactive" id="sn4">4</div><span class="fstep-label inactive">Оплата</span></div>
+            </div>
+            <div class="form-title">Заполните информацию о вашей квартире</div>
+            <div class="form-hint">Адрес нужен для расчёта полной стоимости страховки</div>
+            <div class="fg">
+              <input type="text" id="addr-input" placeholder="Адрес (город, улица, дом, квартира)">
+            </div>
+            <div class="form-docs">
+              <a class="fdoc" href="#" onclick="return false">Правила страхования</a>
+              <a class="fdoc" href="#" onclick="return false">Образец полиса</a>
+              <a class="fdoc" href="#" onclick="return false">КИД</a>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:flex-end;gap:12px;margin-top:8px">
+              <button class="btn-submit" onclick="goStep(2)">Рассчитать стоимость →</button>
+            </div>
+          </div>
+
+          <!-- ШАГ 2: СТОИМОСТЬ -->
+          <div id="step-2" class="form-step-panel">
+            <div class="form-steps">
+              <div class="fstep"><div class="fstep-num done-step">✓</div><span class="fstep-label">Адрес</span></div>
+              <div class="fstep-line"></div>
+              <div class="fstep"><div class="fstep-num" id="sn2b">2</div><span class="fstep-label">Стоимость</span></div>
+              <div class="fstep-line"></div>
+              <div class="fstep"><div class="fstep-num inactive">3</div><span class="fstep-label inactive">Документы</span></div>
+              <div class="fstep-line"></div>
+              <div class="fstep"><div class="fstep-num inactive">4</div><span class="fstep-label inactive">Оплата</span></div>
+            </div>
+
+            <div class="form-section-t">Характеристики квартиры</div>
+            <label class="f-checkbox"><input type="checkbox" id="wooden"> <span>Деревянные стены в доме</span></label>
+            <div class="f-radio-row">
+              <label class="f-radio"><input type="radio" name="rent" value="no" checked> Не в аренде</label>
+              <label class="f-radio"><input type="radio" name="rent" value="out"> Сдаю в аренду</label>
+              <label class="f-radio"><input type="radio" name="rent" value="in"> Снимаю квартиру</label>
+            </div>
+
+            <div class="form-section-t" style="margin-top:16px">Настройки полиса</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+              <div class="f-field-wrap"><label class="f-label">Дата начала действия</label><input type="date" class="f-inp" id="start-date"></div>
+              <div class="f-field-wrap"><label class="f-label">Формат полиса</label>
+                <select class="f-inp"><option>Годовой</option><option>Месячный</option></select>
+              </div>
+            </div>
+            <label class="f-checkbox"><input type="checkbox" id="promo"> <span>У меня есть промокод</span></label>
+            <div id="promo-box" style="display:none;margin-top:8px"><input type="text" class="f-inp" placeholder="Введите промокод"></div>
+
+            <div class="form-section-t" style="margin-top:16px">Выбор защиты для годового полиса</div>
+            <div class="plan-cards">
+              <div class="plan-c" onclick="selectPlan(this)">
+                <div class="plan-c-name">Стандарт</div>
+                <div class="plan-c-row"><span class="plan-c-row-lbl">Общая сумма покрытия</span></div>
+                <div class="plan-c-tag-full">1 500 000 ₽</div>
+                <div class="plan-c-row"><span class="plan-c-row-lbl">Франшиза</span><span>10&nbsp;000 ₽</span></div>
+                <a class="plan-c-link" href="#" onclick="event.stopPropagation();showPlanDetail('standard');return false">Подробнее</a>
+                <div class="plan-c-price">4 440 ₽</div>
+              </div>
+              <div class="plan-c active" onclick="selectPlan(this)">
+                <div class="plan-c-badge">Часто выбирают</div>
+                <div class="plan-c-name">Оптимум</div>
+                <div class="plan-c-row"><span class="plan-c-row-lbl">Общая сумма покрытия</span></div>
+                <div class="plan-c-tag-full">2 300 000 ₽</div>
+                <div class="plan-c-row"><span class="plan-c-row-lbl">Франшиза</span><span>10&nbsp;000 ₽</span></div>
+                <a class="plan-c-link" href="#" onclick="event.stopPropagation();showPlanDetail('optimum');return false">Подробнее</a>
+                <div class="plan-c-price">6 190 ₽</div>
+              </div>
+              <div class="plan-c" onclick="selectPlan(this)">
+                <div class="plan-c-name">Максимум</div>
+                <div class="plan-c-row"><span class="plan-c-row-lbl">Общая сумма покрытия</span></div>
+                <div class="plan-c-tag-full">4 250 000 ₽</div>
+                <div class="plan-c-row"><span class="plan-c-row-lbl">Без франшизы</span><span>—</span></div>
+                <a class="plan-c-link" href="#" onclick="event.stopPropagation();showPlanDetail('maximum');return false">Подробнее</a>
+                <div class="plan-c-price">11 620 ₽</div>
+              </div>
+            </div>
+
+            <!-- Модальные окна подробнее -->
+            <div class="plan-detail-modal" id="pd-standard" onclick="if(event.target===this)this.classList.remove('open')">
+              <div class="plan-detail-body">
+                <h3>Стандарт — подробности</h3>
+                <table>
+                  <tr><td>Общая сумма покрытия</td><td>1 500 000 ₽</td></tr>
+                  <tr><td>Стены, пол и перекрытия</td><td>500 000 ₽</td></tr>
+                  <tr><td>Отделка и оборудование</td><td>300 000 ₽</td></tr>
+                  <tr><td>Движимое имущество</td><td>200 000 ₽</td></tr>
+                  <tr><td>Гражданская ответственность</td><td>500 000 ₽</td></tr>
+                  <tr><td>Франшиза</td><td>10 000 ₽</td></tr>
+                </table>
+                <div style="text-align:center"><button class="btn-close-detail" onclick="document.getElementById('pd-standard').classList.remove('open')">Закрыть</button></div>
+              </div>
+            </div>
+            <div class="plan-detail-modal" id="pd-optimum" onclick="if(event.target===this)this.classList.remove('open')">
+              <div class="plan-detail-body">
+                <h3>Оптимум — подробности</h3>
+                <table>
+                  <tr><td>Общая сумма покрытия</td><td>2 300 000 ₽</td></tr>
+                  <tr><td>Стены, пол и перекрытия</td><td>800 000 ₽</td></tr>
+                  <tr><td>Отделка и оборудование</td><td>500 000 ₽</td></tr>
+                  <tr><td>Движимое имущество</td><td>350 000 ₽</td></tr>
+                  <tr><td>Гражданская ответственность</td><td>650 000 ₽</td></tr>
+                  <tr><td>Франшиза</td><td>10 000 ₽</td></tr>
+                </table>
+                <div style="text-align:center"><button class="btn-close-detail" onclick="document.getElementById('pd-optimum').classList.remove('open')">Закрыть</button></div>
+              </div>
+            </div>
+            <div class="plan-detail-modal" id="pd-maximum" onclick="if(event.target===this)this.classList.remove('open')">
+              <div class="plan-detail-body">
+                <h3>Максимум — подробности</h3>
+                <table>
+                  <tr><td>Общая сумма покрытия</td><td>4 250 000 ₽</td></tr>
+                  <tr><td>Стены, пол и перекрытия</td><td>1 500 000 ₽</td></tr>
+                  <tr><td>Отделка и оборудование</td><td>1 000 000 ₽</td></tr>
+                  <tr><td>Движимое имущество</td><td>750 000 ₽</td></tr>
+                  <tr><td>Гражданская ответственность</td><td>1 000 000 ₽</td></tr>
+                  <tr><td>Франшиза</td><td>Без франшизы</td></tr>
+                </table>
+                <div style="text-align:center"><button class="btn-close-detail" onclick="document.getElementById('pd-maximum').classList.remove('open')">Закрыть</button></div>
+              </div>
+            </div>
+
+            <label class="f-checkbox" style="margin-top:14px"><input type="checkbox" id="custom-plan" onchange="toggleCustom()"> <span>Настроить самостоятельно</span></label>
+            <div id="custom-box" style="display:none;margin-top:12px;background:var(--bg);border-radius:12px;padding:16px;border:1.5px solid var(--border)">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                <div class="f-field-wrap">
+                  <label class="f-label">Стены, пол и перекрытия</label>
+                  <select class="f-inp" onchange="calcCustom()">
+                    <option>500 000 ₽</option><option>1 000 000 ₽</option><option selected>1 500 000 ₽</option>
+                    <option>2 000 000 ₽</option><option>3 000 000 ₽</option><option>5 000 000 ₽</option><option>Не страховать</option>
+                  </select>
+                  <div class="f-hint">Несущие конструкции, перегородки, балкон, лоджия</div>
+                </div>
+                <div class="f-field-wrap">
+                  <label class="f-label">Отделка и оборудование</label>
+                  <select class="f-inp" onchange="calcCustom()">
+                    <option>300 000 ₽</option><option selected>500 000 ₽</option><option>1 000 000 ₽</option>
+                    <option>1 500 000 ₽</option><option>2 000 000 ₽</option><option>3 000 000 ₽</option><option>Не страховать</option>
+                  </select>
+                  <div class="f-hint">Обои, ламинат, сантехника, двери, окна, встроенная техника</div>
+                </div>
+                <div class="f-field-wrap">
+                  <label class="f-label">Движимое имущество</label>
+                  <select class="f-inp" onchange="calcCustom()">
+                    <option>150 000 ₽</option><option>250 000 ₽</option><option selected>350 000 ₽</option>
+                    <option>500 000 ₽</option><option>700 000 ₽</option><option>1 000 000 ₽</option>
+                    <option>1 500 000 ₽</option><option>Не страховать</option>
+                  </select>
+                  <div class="f-hint">Мебель, бытовая техника, электроника, одежда, личные вещи</div>
+                </div>
+                <div class="f-field-wrap">
+                  <label class="f-label">Гражданская ответственность</label>
+                  <select class="f-inp" onchange="calcCustom()">
+                    <option>250 000 ₽</option><option selected>450 000 ₽</option><option>700 000 ₽</option>
+                    <option>1 000 000 ₽</option><option>2 000 000 ₽</option><option>3 000 000 ₽</option>
+                    <option>Не страховать</option>
+                  </select>
+                  <div class="f-hint">Возмещение ущерба соседям при заливе, пожаре или взрыве</div>
+                </div>
+                <div class="f-field-wrap" style="grid-column:1/-1">
+                  <label class="f-label">Франшиза</label>
+                  <select class="f-inp" onchange="calcCustom()" style="max-width:260px">
+                    <option>Без франшизы</option><option>3 000 ₽</option><option>5 000 ₽</option>
+                    <option selected>10 000 ₽</option><option>15 000 ₽</option><option>30 000 ₽</option>
+                  </select>
+                  <div class="f-hint">Часть расходов, которую вы берёте на себя при страховом случае. Чем выше франшиза — тем ниже стоимость полиса.</div>
+                </div>
+              </div>
+              <div style="text-align:right;margin-top:14px;padding-top:12px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)">
+                Стоимость годового полиса: <strong id="custom-price" style="font-size:17px;color:var(--text);font-family:'Unbounded',sans-serif;margin-left:6px">6 190 ₽</strong>
+              </div>
+            </div>
+
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:18px;gap:10px;flex-wrap:wrap">
+              <button class="btn-back" onclick="goStep(1)">← Назад</button>
+              <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+                <button class="btn-agent" onclick="document.getElementById('agent-modal').classList.add('open')">📞 Позвонить агенту</button>
+                <button class="btn-submit" onclick="goStep(3)">Далее →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ШАГ 3: ДАННЫЕ СТРАХОВАТЕЛЯ -->
+          <div id="step-3" class="form-step-panel">
+            <div class="form-steps">
+              <div class="fstep"><div class="fstep-num done-step">✓</div><span class="fstep-label">Адрес</span></div>
+              <div class="fstep-line"></div>
+              <div class="fstep"><div class="fstep-num done-step">✓</div><span class="fstep-label">Стоимость</span></div>
+              <div class="fstep-line"></div>
+              <div class="fstep"><div class="fstep-num">3</div><span class="fstep-label">Документы</span></div>
+              <div class="fstep-line"></div>
+              <div class="fstep"><div class="fstep-num inactive">4</div><span class="fstep-label inactive">Оплата</span></div>
+            </div>
+
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap">
+              <div style="flex:1;min-width:200px">
+                <div class="form-section-t">Данные для оформления</div>
+                <div class="form-hint" style="margin-bottom:14px">Страхователь — тот, кто покупает страховку</div>
+                <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:12px">
+                  <div class="f-field-wrap"><label class="f-label">Фамилия, имя и отчество*</label><input type="text" class="f-inp" id="s3-fio" placeholder="Иванов Иван Иванович"></div>
+                  <div class="f-field-wrap"><label class="f-label">Дата рождения*</label><input type="date" class="f-inp" id="s3-bday"></div>
+                  <div class="f-field-wrap"><label class="f-label">Мобильный телефон*</label><input type="tel" class="f-inp" id="s3-tel" placeholder="+7 (___) ___-__-__"></div>
+                  <div class="f-field-wrap"><label class="f-label">Электронная почта*</label><input type="email" class="f-inp" id="s3-email" placeholder="mail@example.com"></div>
+                </div>
+                <button class="btn-gosuslugi" onclick="fillFromGosuslugi(this)">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#0d47a1" opacity=".15"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z" fill="#0d47a1"/></svg>
+                  Заполнить через Госуслуги
+                </button>
+              </div>
+              <div style="min-width:130px;padding:14px;background:var(--bg);border-radius:12px;border:1.5px solid var(--border)">
+                <div style="font-size:11px;color:var(--muted);margin-bottom:4px">Стоимость:</div>
+                <div style="font-family:'Unbounded',sans-serif;font-size:18px;font-weight:700;color:var(--text);margin-bottom:12px">6 190 ₽</div>
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <a class="fdoc" href="#" onclick="return false" style="font-size:11px">Правила страхования</a>
+                  <a class="fdoc" href="#" onclick="return false" style="font-size:11px">Образец полиса</a>
+                  <a class="fdoc" href="#" onclick="return false" style="font-size:11px">КИД</a>
+                </div>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;gap:12px">
+              <button class="btn-back" onclick="goStep(2)">← Назад</button>
+              <button class="btn-submit" onclick="goStep(4)">Перейти к оплате →</button>
+            </div>
+          </div>
+
+          <!-- ШАГ 4: ОПЛАТА + ЧЕКБОКСЫ -->
+          <div id="step-4" class="form-step-panel">
+            <div class="form-steps">
+              <div class="fstep"><div class="fstep-num done-step">✓</div><span class="fstep-label">Адрес</span></div>
+              <div class="fstep-line"></div>
+              <div class="fstep"><div class="fstep-num done-step">✓</div><span class="fstep-label">Стоимость</span></div>
+              <div class="fstep-line"></div>
+              <div class="fstep"><div class="fstep-num done-step">✓</div><span class="fstep-label">Документы</span></div>
+              <div class="fstep-line"></div>
+              <div class="fstep"><div class="fstep-num">4</div><span class="fstep-label">Оплата</span></div>
+            </div>
+
+            <div class="form-section-t">Итого к оплате</div>
+            <div style="background:var(--bg);border-radius:12px;padding:16px 20px;margin-bottom:18px">
+              <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:6px"><span>Тариф «Оптимум»</span><span>6 190 ₽ / год</span></div>
+              <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:10px"><span>Дата начала действия</span><span id="pay-date">—</span></div>
+              <div style="display:flex;justify-content:space-between;font-weight:700;font-size:16px;color:var(--text);border-top:1px solid var(--border);padding-top:10px"><span>К оплате</span><span style="font-family:'Unbounded',sans-serif;color:var(--orange)">6 190 ₽</span></div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:18px">
+              <label class="f-checkbox-consent">
+                <input type="checkbox" id="chk-ads">
+                <span>Я согласен(а) на получение рекламных и информационных материалов</span>
+              </label>
+            </div>
+
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+              <button class="btn-back" onclick="goStep(3)">← Назад</button>
+              <button class="btn-submit" id="pay-btn" onclick="confirmOrder()">Подтверждаю</button>
+            </div>
+            <div style="font-size:11px;color:var(--muted);margin-top:10px;line-height:1.5">Нажимая «Подтверждаю», вы подтверждаете, что ознакомились с условиями полиса страхования квартиры, <a href="#" onclick="return false" style="color:var(--blue-light);text-decoration:underline">Правилами страхования</a> и <a href="#" onclick="return false" style="color:var(--blue-light);text-decoration:underline">Ключевым информационным документом (КИД)</a> и согласны с ними.</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STICKY TABS — синие, центрированные -->
+<div class="sticky-tabs">
+  <div class="tabs-inner">
+    <div class="stab active" onclick="goTab('info')">Информация</div>
+    <div class="stab" onclick="goTab('conditions')">Условия</div>
+    <div class="stab" onclick="goTab('faq')">Частые вопросы</div>
+    <div class="stab" onclick="goTab('insurance-case')">Страховой случай</div>
+    <div class="stab" onclick="goTab('ai-section')">ИИ-помощник</div>
+  </div>
+</div>
+
+<!-- INFO -->
+<div id="info"><div class="sw"><div class="sec">
+  <div class="stag">ИНФОРМАЦИЯ</div>
+  <div class="stitle">Почему выбирают нас</div>
+  <div class="info-grid">
+    <div class="ic"><div class="ic-icon io">⚡</div><div class="ic-t">Быстрые выплаты</div><div class="ic-d">Минимум документов, ясные сроки. При страховом случае мы сами связываемся и помогаем пройти весь процесс.</div></div>
+    <div class="ic"><div class="ic-icon ig">📱</div><div class="ic-t">Полностью онлайн</div><div class="ic-d">Оформление, продление, подача заявления — через телефон или компьютер. Без очередей и офисов.</div></div>
+    <div class="ic"><div class="ic-icon ib">🤝</div><div class="ic-t">Личный агент</div><div class="ic-d">Агент объяснит условия, поможет с выбором и сопроводит при страховом случае. Всегда на связи.</div></div>
+    <div class="ic"><div class="ic-icon ig">💬</div><div class="ic-t">ИИ-консультант 24/7</div><div class="ic-d">Не знаете с чего начать? Наш ИИ-помощник ответит на любые вопросы по страхованию в любое время.</div></div>
+    <div class="ic"><div class="ic-icon io">🔧</div><div class="ic-t">Гибкий выбор покрытия</div><div class="ic-d">Составьте полис под себя: выберите только те риски, которые важны именно вам, или воспользуйтесь одним из готовых пакетов.</div></div>
+    <div class="ic"><div class="ic-icon ib">📅</div><div class="ic-t">Быстрое продление</div><div class="ic-d">Продлите полис за пару кликов — без повторного заполнения данных. Напомним заранее, чтобы защита не прерывалась.</div></div>
+  </div>
+
+  <!-- LOYALTY — без подзаголовка -->
+  <div class="loyalty">
+    <div class="loyalty-t">Чем дольше вы с нами — тем выгоднее условия</div>
+    <div class="lsteps">
+      <div class="ls"><div class="ls-y">1 ГОД</div><div class="ls-e">🎁</div><div class="ls-t">Скидка до 10%*</div><div class="ls-d">на продление полиса</div></div>
+      <div class="ls"><div class="ls-y">2 ГОДА</div><div class="ls-e">🔓</div><div class="ls-t">Расширенное покрытие*</div><div class="ls-d">доп. риски без доплаты</div></div>
+      <div class="ls"><div class="ls-y">3 ГОДА</div><div class="ls-e">⚡</div><div class="ls-t">Приоритет выплат*</div><div class="ls-d">ускоренное рассмотрение</div></div>
+      <div class="ls"><div class="ls-y">4+ ЛЕТ</div><div class="ls-e">👑</div><div class="ls-t">VIP-статус*</div><div class="ls-d">скидка до 20%, личный менеджер</div></div>
+    </div>
+    <div style="margin-top:16px;font-size:11px;color:rgba(255,255,255,.4);position:relative;z-index:1">* С полными условиями программы лояльности вы можете ознакомиться <a href="#" onclick="return false" style="color:rgba(255,255,255,.6);text-decoration:underline">здесь</a></div>
+  </div>
+</div></div></div>
+
+<!-- CONDITIONS — карточки как на Т-Банке -->
+<style>
+.cond-tabs{display:flex;gap:8px;margin-bottom:32px;flex-wrap:wrap}
+.cond-tab{padding:8px 20px;border-radius:50px;border:1.5px solid var(--border);font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;transition:all .2s;background:#fff}
+.cond-tab.active{border-color:var(--blue);color:var(--blue);background:rgba(26,60,110,.06);font-weight:600}
+.cond-tab:hover{border-color:var(--blue);color:var(--blue)}
+.cond-panel{display:none}.cond-panel.active{display:block}
+.cond-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.ccard{background:#fff;border-radius:var(--r-lg);border:1.5px solid var(--border);padding:28px;transition:all .2s}
+.ccard:hover{border-color:var(--orange);transform:translateY(-3px);box-shadow:0 8px 24px rgba(249,115,22,.1)}
+.ccard-img{width:100%;height:180px;border-radius:12px;margin-bottom:18px;object-fit:cover;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:52px}
+.ccard-t{font-size:16px;font-weight:700;color:var(--text);margin-bottom:8px}
+.ccard-d{font-size:13px;color:var(--muted);line-height:1.65}
+</style>
+<div id="conditions" style="background:#fff"><div class="sw"><div class="sec">
+  <div class="stag">УСЛОВИЯ</div>
+  <div class="stitle">Что входит в страхование</div>
+
+  <div class="cond-tabs">
+    <div class="cond-tab active" onclick="showCondNew('risks',this)">От чего защитим</div>
+    <div class="cond-tab" onclick="showCondNew('what',this)">Что защитим</div>
+    <div class="cond-tab" onclick="showCondNew('docs',this)">Документы</div>
+  </div>
+
+  <!-- От чего защитим -->
+  <div id="cn-risks" class="cond-panel active">
+    <div class="cond-cards">
+      <div class="ccard">
+        <div class="ccard-img">🔥</div>
+        <div class="ccard-t">Пожар</div>
+        <div class="ccard-d">Возместим затраты на ремонт и покупку новых вещей, если в вашей квартире случился пожар или взрыв</div>
+      </div>
+      <div class="ccard">
+        <div class="ccard-img">💧</div>
+        <div class="ccard-t">Залив</div>
+        <div class="ccard-d">Покроем расходы, если прорвало водопроводную трубу или потекли радиаторы отопления</div>
+      </div>
+      <div class="ccard">
+        <div class="ccard-img">🔑</div>
+        <div class="ccard-t">Кража</div>
+        <div class="ccard-d">Компенсируем затраты, если в квартиру проникли воры и похитили ваши вещи, повредили мебель, отделку или входную дверь</div>
+      </div>
+      <div class="ccard">
+        <div class="ccard-img">🌪️</div>
+        <div class="ccard-t">Стихийные бедствия</div>
+        <div class="ccard-d">Возместим ущерб от урагана, града, молнии, сильного снегопада и других природных явлений</div>
+      </div>
+      <div class="ccard">
+        <div class="ccard-img">🏗️</div>
+        <div class="ccard-t">Механическое воздействие</div>
+        <div class="ccard-d">Покроем ущерб, причинённый в ходе ремонта в соседних помещениях</div>
+      </div>
+      <div class="ccard">
+        <div class="ccard-img">🤝</div>
+        <div class="ccard-t">Ответственность перед соседями</div>
+        <div class="ccard-d">Компенсируем за вас ущерб соседям, если вы их зальёте, например, после ремонта или замены сантехники</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Что защитим -->
+  <div id="cn-what" class="cond-panel">
+    <div class="cond-cards">
+      <div class="ccard">
+        <div class="ccard-img">🛋️</div>
+        <div class="ccard-t">Внутренняя отделка квартиры</div>
+        <div class="ccard-d">Возместим расходы на ремонт, если из-за страхового случая, например, осыпался потолок, пришлось менять ламинат или обои</div>
+      </div>
+      <div class="ccard">
+        <div class="ccard-img">📺</div>
+        <div class="ccard-t">Мебель и техника</div>
+        <div class="ccard-d">При страховом случае возместим стоимость ремонта или покупки нового дивана или телевизора</div>
+      </div>
+      <div class="ccard">
+        <div class="ccard-img">👗</div>
+        <div class="ccard-t">Личные вещи</div>
+        <div class="ccard-d">Компенсируем расходы на одежду, обувь, игрушки и другие вещи, если им нанесён ущерб</div>
+      </div>
+      <div class="ccard">
+        <div class="ccard-img">🪟</div>
+        <div class="ccard-t">Окна, двери, стены и перекрытия</div>
+        <div class="ccard-d">Покроем убытки, если из-за пожара или взрыва нужно восстанавливать стены, перекрытия, окна, двери, балкон и лоджию</div>
+      </div>
+      <div class="ccard">
+        <div class="ccard-img">🔧</div>
+        <div class="ccard-t">Инженерные коммуникации</div>
+        <div class="ccard-d">Трубы, электрооборудование, система отопления и кондиционирования входят в покрытие</div>
+      </div>
+      <div class="ccard">
+        <div class="ccard-img">👥</div>
+        <div class="ccard-t">Гражданская ответственность</div>
+        <div class="ccard-d">Возместим вред, причинённый имуществу соседей из-за затопления или пожара в вашей квартире</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Документы -->
+  <div id="cn-docs" class="cond-panel">
+    <p style="font-size:14px;color:var(--muted);margin-bottom:20px;line-height:1.7">Основные документы по полису страхования квартиры:</p>
+    <div style="display:flex;flex-direction:column;gap:4px;max-width:480px">
+      <a href="#" onclick="return false" style="display:flex;align-items:center;gap:14px;padding:14px 18px;background:#fff;border-radius:10px;border:1.5px solid var(--border);text-decoration:none;color:var(--blue-light);font-size:14px;font-weight:500;transition:all .2s" onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--blue-light)'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Ключевой информационный документ (КИД)
+      </a>
+      <a href="#" onclick="return false" style="display:flex;align-items:center;gap:14px;padding:14px 18px;background:#fff;border-radius:10px;border:1.5px solid var(--border);text-decoration:none;color:var(--blue-light);font-size:14px;font-weight:500;transition:all .2s" onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--blue-light)'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Правила страхования
+      </a>
+      <a href="#" onclick="return false" style="display:flex;align-items:center;gap:14px;padding:14px 18px;background:#fff;border-radius:10px;border:1.5px solid var(--border);text-decoration:none;color:var(--blue-light);font-size:14px;font-weight:500;transition:all .2s" onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--blue-light)'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Образец страхового полиса
+      </a>
+    </div>
+  </div>
+
+</div></div></div>
+
+
+
+
+
+<!-- TRUST + FAQ -->
+<div id="faq"><div class="sw"><div class="sec">
+  <div class="stag">В ЦИФРАХ</div>
+  <div class="stitle">Нам доверяют</div>
+  <div class="tg">
+    <div class="ti">
+      <div class="tv">12 000+</div>
+      <div class="tl">защищённых квартир</div>
+      <div class="tsrc">по данным <a href="https://www.insur-info.ru/statistics/" target="_blank">insur-info.ru</a></div>
+    </div>
+    <div class="ti">
+      <div class="tv">86%</div>
+      <div class="tl">выплат без отказа</div>
+      <div class="tsrc">по данным <a href="https://cbr.ru/insurance/reporting/" target="_blank">cbr.ru</a></div>
+    </div>
+    <div class="ti">
+      <div class="tv">3 дня</div>
+      <div class="tl">средний срок выплат</div>
+      <div class="tsrc">по данным <a href="https://www.insur-info.ru/statistics/" target="_blank">insur-info.ru</a></div>
+    </div>
+    <div class="ti">
+      <div class="tv">4.9 ★</div>
+      <div class="tl">средняя оценка клиентов</div>
+      <div class="tsrc">по данным <a href="https://market.yandex.ru/" target="_blank">Яндекс.Маркет</a></div>
+    </div>
+  </div>
+
+  <div class="stag">ЧАСТЫЕ ВОПРОСЫ</div>
+  <div class="stitle" style="margin-bottom:24px">Ответы на частые вопросы</div>
+
+  <div class="faq-list">
+    <div class="fi"><div class="fq" onclick="this.parentElement.classList.toggle('open')">Что такое страховой случай?<span class="fa-arr">+</span></div><div class="fa">Страховой случай — это событие, предусмотренное договором страхования, при наступлении которого страховая компания обязана выплатить компенсацию. Например: залив, пожар, кража. Важно: событие должно быть случайным — умышленные действия страхователя страховым случаем не признаются.</div></div>
+    <div class="fi"><div class="fq" onclick="this.parentElement.classList.toggle('open')">Что покрывает страховка?<span class="fa-arr">+</span></div><div class="fa">Страховка покрывает: внутреннюю отделку квартиры, мебель и технику, личные вещи, конструктивные элементы (стены, перекрытия, окна, двери, балкон), инженерные коммуникации (трубы, электрооборудование, отопление), а также гражданскую ответственность перед соседями.</div></div>
+    <div class="fi"><div class="fq" onclick="this.parentElement.classList.toggle('open')">Что такое страховая сумма?<span class="fa-arr">+</span></div><div class="fa">Страховая сумма — максимальный размер выплаты по договору. Если ущерб превысит страховую сумму, разницу страховая не возместит. Поэтому важно выбирать страховую сумму, близкую к реальной стоимости имущества.</div></div>
+    <div class="fi"><div class="fq" onclick="this.parentElement.classList.toggle('open')">Что такое франшиза?<span class="fa-arr">+</span></div><div class="fa">Франшиза — это часть ущерба, которую вы берёте на себя. Например, если франшиза 5 000 ₽, а ущерб составил 50 000 ₽ — страховая выплатит 45 000 ₽. Полис с франшизой стоит дешевле, но при небольших убытках выплаты не будет.</div></div>
+    <div class="fi"><div class="fq" onclick="this.parentElement.classList.toggle('open')">Зачем страховать квартиру?<span class="fa-arr">+</span></div><div class="fa">Страховка защищает от непредвиденных расходов: если в квартире случится залив, пожар или кража — вам не придётся тратить собственные сбережения на ремонт и покупку новых вещей. Если вы навредили соседям — страховая урегулирует вопрос и возместит ущерб за вас.</div></div>
+    <div class="fi"><div class="fq" onclick="this.parentElement.classList.toggle('open')">Какую квартиру можно застраховать?<span class="fa-arr">+</span></div><div class="fa">Можно застраховать квартиру и апартаменты в большинстве городов России. Квартира не должна находиться в аварийном состоянии, не должна подлежать сносу или реконструкции. Также можно застраховать частный дом и дачу.</div></div>
+    <div class="fi"><div class="fq" onclick="this.parentElement.classList.toggle('open')">Можно ли изменить наполнение страховки?<span class="fa-arr">+</span></div><div class="fa">Да. Вы можете самостоятельно выбрать только те покрытия, которые важны именно вам, или воспользоваться одним из готовых пакетов. Изменить параметры полиса после оформления можно по телефону или в чате.</div></div>
+    <div class="fi"><div class="fq" onclick="this.parentElement.classList.toggle('open')">Как оплатить страховку?<span class="fa-arr">+</span></div><div class="fa">Оплатить полис можно онлайн банковской картой. После оплаты полис придёт вам на электронную почту. Никаких поездок в офис и бумажных документов не нужно.</div></div>
+    <div class="fi"><div class="fq" onclick="this.parentElement.classList.toggle('open')">Когда полис начинает действовать?<span class="fa-arr">+</span></div><div class="fa">Страховая защита начинает действовать с выбранной вами даты, но не ранее чем через 7 дней после оформления страховки.</div></div>
+    <div class="fi"><div class="fq" onclick="this.parentElement.classList.toggle('open')">Можно ли оформить полис, если я не собственник квартиры?<span class="fa-arr">+</span></div><div class="fa">Арендатор может застраховать своё движимое имущество (мебель, технику, личные вещи) и гражданскую ответственность перед соседями. Страхование конструктива и отделки доступно только для собственника.</div></div>
+    <div class="fi"><div class="fq" onclick="this.parentElement.classList.toggle('open')">Могу ли я застраховать съёмную квартиру?<span class="fa-arr">+</span></div><div class="fa">Да. Арендатор может застраховать своё имущество в съёмной квартире — мебель, технику, одежду и другие личные вещи, а также оформить покрытие гражданской ответственности перед соседями.</div></div>
+    <div class="fi"><div class="fq" onclick="this.parentElement.classList.toggle('open')">Могу ли я застраховать квартиру, которую сдаю в аренду?<span class="fa-arr">+</span></div><div class="fa">Да. Собственник может застраховать квартиру, которую сдаёт в аренду: отделку, имущество и ответственность. Это защитит вас от ущерба, который могут причинить жильцы.</div></div>
+    <div class="fi"><div class="fq" onclick="this.parentElement.classList.toggle('open')">От чего зависит стоимость полиса?<span class="fa-arr">+</span></div><div class="fa">Стоимость зависит от типа объекта, площади, года постройки, набора рисков, страховой суммы, региона расположения и истории страхования. Клиенты без страховых случаев получают скидку при продлении.</div></div>
+    <div class="fi"><div class="fq" onclick="this.parentElement.classList.toggle('open')">Где найти оформленный полис?<span class="fa-arr">+</span></div><div class="fa">Полис придёт на указанную вами электронную почту сразу после оплаты. Также вы всегда можете запросить его повторно, обратившись к нашему агенту по телефону или в чат.</div></div>
+    <div class="fi"><div class="fq" onclick="this.parentElement.classList.toggle('open')">Что делать при наступлении страхового случая?<span class="fa-arr">+</span></div><div class="fa">Зафиксируйте повреждения на фото, сообщите о событии в соответствующие органы (аварийная служба, МЧС, полиция) и оставьте заявку онлайн или позвоните нам. Агент объяснит дальнейшие шаги.</div></div>
+    <div class="fi"><div class="fq" onclick="this.parentElement.classList.toggle('open')">Как получить страховую выплату?<span class="fa-arr">+</span></div><div class="fa">Оставьте заявку онлайн или позвоните на горячую линию. Подготовьте фотографии повреждений и документы, подтверждающие страховой случай. Среднее время рассмотрения — 3 рабочих дня после предоставления всех документов.</div></div>
+    <div class="fi"><div class="fq" onclick="this.parentElement.classList.toggle('open')">Какие документы нужны для получения выплаты?<span class="fa-arr">+</span></div><div class="fa">Заявление о страховом случае, фотографии повреждений, справка из УК или МЧС (при заливе или пожаре), справка из полиции (при краже), паспорт и страховой полис. Агент поможет собрать нужные документы.</div></div>
+    <div class="fi"><div class="fq" onclick="this.parentElement.classList.toggle('open')">Кто получит выплату при наступлении страхового случая?<span class="fa-arr">+</span></div><div class="fa">Выплата производится страхователю — то есть тому, кто оформил полис. При страховании ответственности перед соседями возмещение выплачивается пострадавшей стороне.</div></div>
+    <div class="fi"><div class="fq" onclick="this.parentElement.classList.toggle('open')">Где прочитать правила страхования?<span class="fa-arr">+</span></div><div class="fa">Правила страхования, образец полиса и ключевой информационный документ (КИД) доступны в форме оформления полиса на этом сайте. Также вы можете запросить документы у нашего агента.</div></div>
+  </div>
+</div></div></div>
+
+<!-- INSURANCE CASE -->
+<div id="insurance-case" style="background:#fff">
+  <div class="sw"><div class="sec">
+    <div class="stag">СТРАХОВОЙ СЛУЧАЙ</div>
+    <div class="stitle">Что делать, если произошёл страховой случай?</div>
+
+    <style>
+      .ic-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-bottom:28px;background:#fff;border:1.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden}
+      .ic-step-tab{padding:18px 24px;cursor:pointer;display:flex;align-items:center;gap:12px;border-right:1px solid var(--border);transition:background .2s;font-size:14px;font-weight:500;color:var(--muted)}
+      .ic-step-tab:last-child{border-right:none}
+      .ic-step-tab.active{background:var(--bg);color:var(--text);font-weight:600}
+      .ic-step-tab:hover:not(.active){background:rgba(249,115,22,.04)}
+      .ic-step-num{width:28px;height:28px;border-radius:50%;background:var(--orange);color:#fff;font-family:'Unbounded',sans-serif;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+      .ic-step-num.done{background:var(--blue)}
+      .ic-step-panel{display:none;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:32px;margin-bottom:8px}
+      .ic-step-panel.active{display:block}
+      .ic-step-panel ul{list-style:none;display:flex;flex-direction:column;gap:14px}
+      .ic-step-panel li{display:flex;align-items:flex-start;gap:12px;font-size:14px;color:var(--text);line-height:1.65}
+      .ic-step-panel li::before{content:'●';color:var(--orange);font-size:10px;margin-top:4px;flex-shrink:0}
+      .ic-step-panel li strong{color:var(--text)}
+      .ic-step-panel .ic-note{margin-top:20px;font-size:13px;color:var(--muted);padding:14px 18px;background:#fff;border-radius:10px;border-left:3px solid var(--orange);line-height:1.65}
+    </style>
+
+    <div class="ic-steps">
+      <div class="ic-step-tab active" onclick="showIcStep(1,this)">
+        <span class="ic-step-num">1</span>Зафиксируйте повреждения
+      </div>
+      <div class="ic-step-tab" onclick="showIcStep(2,this)">
+        <span class="ic-step-num">2</span>Заявите о событии
+      </div>
+      <div class="ic-step-tab" onclick="showIcStep(3,this)">
+        <span class="ic-step-num">3</span>Будьте в курсе решения
+      </div>
+    </div>
+
+    <div id="ic-panel-1" class="ic-step-panel active">
+      <ul>
+        <li><strong>Оперативно сообщите в соответствующие органы:</strong><br>
+          — Залив → аварийная служба, управляющая компания (ЖЭУ, ЖКХ)<br>
+          — Пожар → отдел Госпожнадзора (тел. 101)<br>
+          — Взрыв → МЧС, газовая служба<br>
+          — Стихийное бедствие → МЧС<br>
+          — Кража, грабёж → МВД (тел. 102)
+        </li>
+        <li>Зафиксируйте повреждения максимально подробно: сделайте фотографии с разных ракурсов.</li>
+        <li>Не выбрасывайте повреждённые вещи до осмотра — они могут понадобиться для оценки ущерба.</li>
+      </ul>
+      <div class="ic-note">Чем подробнее зафиксированы повреждения — тем быстрее пройдёт урегулирование. Фотографируйте всё сразу.</div>
+    </div>
+
+    <div id="ic-panel-2" class="ic-step-panel">
+      <ul>
+        <li>Подготовьте комплект документов: воспользуйтесь списком во вкладке «Документы» раздела «Условия».</li>
+        <li>Заявить о случившемся вы можете: позвонив на горячую линию или оставив заявку онлайн. Агент поможет оформить заявление и подскажет, какие документы нужны в вашем конкретном случае.</li>
+        <li>Приложите документы и фотографии повреждений.</li>
+        <li>Ожидайте подтверждения: если потребуется дополнительная информация, агент свяжется с вами.</li>
+      </ul>
+      <div class="ic-note">Не затягивайте с подачей заявления — сообщите нам о страховом случае в течение срока, указанного в вашем полисе.</div>
+    </div>
+
+    <div id="ic-panel-3" class="ic-step-panel">
+      <ul>
+        <li>Стандартный срок рассмотрения заявления — 3 рабочих дня после получения всех необходимых документов.</li>
+        <li>Вы можете уточнить статус заявления, позвонив агенту или написав в чат — мы всегда на связи.</li>
+        <li>При положительном решении выплата поступит на указанные вами банковские реквизиты.</li>
+        <li>Остались вопросы? Обратитесь к нашему ИИ-консультанту или позвоните на горячую линию.</li>
+      </ul>
+      <div class="ic-note">Среднее время выплаты — 3 рабочих дня. Мы стараемся урегулировать каждый случай максимально быстро.</div>
+    </div>
+
+  </div></div>
+</div>
+
+
+<!-- AI SECTION -->
+<div id="ai-section" style="background:var(--bg);padding:64px 0">
+  <div class="sw">
+    <div class="stag">ИИ-ПОМОЩНИК</div>
+    <div class="stitle">Спросите у нашего ИИ-консультанта</div>
+    <div class="ai-block">
+      <div class="ai-hdr">
+        <div class="ai-hdr-l">
+          <div class="ai-av">🤖</div>
+          <div>
+            <div class="ai-name">ИИ-консультант по страхованию</div>
+            <div class="ai-st"><div class="ai-dot"></div>Онлайн — отвечаю мгновенно</div>
+          </div>
+        </div>
+        <button class="call-btn" onclick="document.getElementById('call-modal').classList.add('open')">📞 Нужна помощь — позвоните нам</button>
+      </div>
+      <div class="ai-chat" id="ai-chat">
+        <div class="am bot">Привет! Помогу разобраться со страхованием квартиры. Задайте любой вопрос — объясню простым языком, без юридического жаргона.</div>
+        <div class="am bot">Например: что такое страховое покрытие, как работает франшиза, или как получить выплату.</div>
+      </div>
+      <div class="ai-chips">
+        <div class="ai-chip" onclick="askAI('Что такое страховое покрытие?')">Что такое страховое покрытие?</div>
+        <div class="ai-chip" onclick="askAI('Что такое франшиза?')">Что такое франшиза?</div>
+        <div class="ai-chip" onclick="askAI('Как получить выплату при заливе?')">Выплата при заливе?</div>
+        <div class="ai-chip" onclick="askAI('Какой тариф выбрать?')">Какой тариф выбрать?</div>
+      </div>
+      <div class="ai-row">
+        <input class="ai-inp" id="ai-input" placeholder="Напишите вопрос по страхованию..." onkeydown="if(event.key==='Enter')sendAI()">
+        <button class="ai-snd" onclick="sendAI()">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M14 8L2 2l2 6-2 6 12-6z" fill="white"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER CTA -->
+<div class="ft-cta">
+  <h2>Оформите полис сегодня</h2>
+  <p>Введите адрес — рассчитаем стоимость за 1 минуту. От 1 500 ₽ в год.</p>
+  <button class="ft-cta-btn" onclick="scrollToForm()">Рассчитать стоимость →</button>
+</div>
+<footer>
+  <div class="fl">Защита<span>Дом</span></div>
+  <div class="flinks">
+    <a href="#">Условия страхования</a>
+    <a href="#">Политика конфиденциальности</a>
+    <a href="#">Контакты</a>
+  </div>
+  <div class="fc">© 2025 ЗащитаДом</div>
+</footer>
+
+<!-- MODAL -->
+<div class="mo" id="call-modal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="md">
+    <div style="font-size:38px;margin-bottom:12px">📞</div>
+    <h3>Позвоните нам</h3>
+    <p>Наши специалисты помогут выбрать полис, объяснят условия и оформят всё за вас</p>
+    <div class="md-ph">8 800 555-XX-XX</div>
+    <div class="md-hr">Бесплатно · Ежедневно 9:00–21:00</div>
+    <button class="md-cl" onclick="document.getElementById('call-modal').classList.remove('open')">Закрыть</button>
+  </div>
+</div>
+
+<script>
+/* ── НАВИГАЦИЯ ── */
+function goTab(id){
+  const ids=['info','conditions','faq','insurance-case','ai-section'];
+  document.querySelectorAll('.stab').forEach((t,i)=>{t.classList.toggle('active',ids[i]===id)});
+  const el=document.getElementById(id);
+  if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+/* ── ФОРМА: ШАГИ ── */
+function goStep(n){
+  document.querySelectorAll('.form-step-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('step-'+n).classList.add('active');
+  if(n===4){
+    const d=document.getElementById('start-date');
+    const el=document.getElementById('pay-date');
+    if(el)el.textContent=d&&d.value?d.value:'не указана';
+  }
+  document.getElementById('form-top').scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+/* ── ФОРМА: ВЫБОР ТАРИФА ── */
+function selectPlan(el){
+  document.querySelectorAll('.plan-c').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  // снять «настроить самостоятельно»
+  const cb=document.getElementById('custom-plan');
+  if(cb)cb.checked=false;
+  const box=document.getElementById('custom-box');
+  if(box)box.style.display='none';
+}
+
+/* ── ФОРМА: НАСТРОИТЬ САМОСТОЯТЕЛЬНО ── */
+function toggleCustom(){
+  const box=document.getElementById('custom-box');
+  const checked=document.getElementById('custom-plan').checked;
+  box.style.display=checked?'block':'none';
+  if(checked) document.querySelectorAll('.plan-c').forEach(c=>c.classList.remove('active'));
+}
+
+/* ── ПРОМОКОД ── */
+document.addEventListener('change',function(e){
+  if(e.target.id==='promo'){
+    document.getElementById('promo-box').style.display=e.target.checked?'block':'none';
+  }
+  /* разблокировать кнопку оплаты */
+  if(e.target.id==='chk-terms'||e.target.id==='chk-personal'){
+    const ok=document.getElementById('chk-terms').checked&&document.getElementById('chk-personal').checked;
+    const btn=document.getElementById('pay-btn');
+    if(btn){btn.style.opacity=ok?'1':'0.5';btn.style.cursor=ok?'pointer':'not-allowed';}
+  }
+});
+
+/* ── ГОСУСЛУГИ (только шаг 3 — данные о себе) ── */
+function fillFromGosuslugi(btn){
+  const fio=document.getElementById('s3-fio');
+  const bday=document.getElementById('s3-bday');
+  const tel=document.getElementById('s3-tel');
+  const email=document.getElementById('s3-email');
+  if(fio)fio.value='Иванов Иван Иванович';
+  if(bday)bday.value='1985-06-15';
+  if(tel)tel.value='+7 (999) 123-45-67';
+  if(email)email.value='ivanov@mail.ru';
+  const orig=btn.innerHTML;
+  btn.innerHTML='✓ Данные заполнены';
+  btn.style.background='#d4edda';btn.style.borderColor='#28a745';btn.style.color='#155724';
+  setTimeout(()=>{btn.innerHTML=orig;btn.style.background='';btn.style.borderColor='';btn.style.color='';},2500);
+}
+
+/* ── ЗАЯВКА АГЕНТУ ── */
+function submitAgentForm(){
+  const chk=document.getElementById('ag-chk1');
+  const fio=document.getElementById('ag-fio');
+  const tel=document.getElementById('ag-tel');
+  if(!chk||!chk.checked){
+    chk.closest('.f-checkbox-consent').style.borderColor='#ef4444';
+    setTimeout(()=>chk.closest('.f-checkbox-consent').style.borderColor='',2000);
+    return;
+  }
+  if(!fio||!fio.value.trim()||!tel||!tel.value.trim()){
+    [fio,tel].forEach(el=>{if(el&&!el.value.trim()){el.style.borderColor='#ef4444';setTimeout(()=>el.style.borderColor='',2000);}});
+    return;
+  }
+  document.getElementById('agent-modal').querySelector('.md').innerHTML='<div style="font-size:48px;margin-bottom:16px">✅</div><h3 style="margin-bottom:10px">Заявка принята!</h3><p style="margin-bottom:20px">Агент свяжется с вами в выбранное время. Спасибо!</p><button class="btn-submit" onclick="document.getElementById(\'agent-modal\').classList.remove(\'open\')">Закрыть</button>';
+}
+
+/* ── РАСЧЁТ «НАСТРОИТЬ САМОСТОЯТЕЛЬНО» ── */
+function calcCustom(){
+  const selects=document.querySelectorAll('#custom-box select');
+  let base=1800;
+  selects.forEach((s,i)=>{
+    const idx=s.selectedIndex;
+    if(i<4) base+=idx*420;
+    else base-=idx*160;
+  });
+  const el=document.getElementById('custom-price');
+  if(el) el.textContent=Math.max(1200,base).toLocaleString('ru-RU')+' ₽';
+}
+
+
+/* ── ПОДТВЕРЖДЕНИЕ ЗАКАЗА ── */
+function confirmOrder(){
+  const btn=document.getElementById('pay-btn');
+  btn.textContent='Подтверждено!';
+  btn.disabled=true;
+  btn.style.opacity='0.7';
+  setTimeout(()=>{btn.textContent='Подтверждаю';btn.disabled=false;btn.style.opacity='';},2500);
+}
+
+/* ── ПОДРОБНЕЕ О ТАРИФЕ ── */
+function showPlanDetail(plan){
+  document.getElementById('pd-'+plan).classList.add('open');
+}
+
+/* ── УСЛОВИЯ (вкладки) ── */
+function showCondNew(k,btn){
+  document.querySelectorAll('.cond-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.cond-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('cn-'+k).classList.add('active');
+}
+
+/* ── СТРАХОВОЙ СЛУЧАЙ (вкладки) ── */
+function showIcStep(n,btn){
+  document.querySelectorAll('.ic-step-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.ic-step-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('ic-panel-'+n).classList.add('active');
+}
+
+/* ── СКРОЛЛ К ФОРМЕ ── */
+function scrollToForm(){
+  // всегда возвращаем на шаг 1
+  goStep(1);
+  document.getElementById('form-top').scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+/* ── ИИ-КОНСУЛЬТАНТ ── */
+const ans={
+  'Что такое страховое покрытие?':'Страховое покрытие — перечень рисков, при которых страховая выплатит компенсацию: залив, пожар, кража и другие. Чем шире покрытие — тем выше стоимость полиса.',
+  'Что такое франшиза?':'Франшиза — часть ущерба, которую вы берёте на себя. Если франшиза 5 000 ₽, а ущерб 50 000 ₽ — страховая выплатит 45 000 ₽. Полис с франшизой дешевле.',
+  'Как получить выплату при заливе?':'При заливе: 1) Сфотографируйте повреждения. 2) Возьмите справку из управляющей компании. 3) Подайте заявление онлайн. Средний срок рассмотрения — 3 рабочих дня.',
+  'Какой тариф выбрать?':'Если снимаете жильё — Стандарт. Если собственник — Оптимум (отделка + ответственность). Для полной защиты — Максимум. Или настройте покрытия самостоятельно!'
+};
+function askAI(q){
+  const chat=document.getElementById('ai-chat');
+  if(!chat)return;
+  chat.innerHTML+=`<div class="am user">${q}</div>`;
+  chat.scrollTop=chat.scrollHeight;
+  setTimeout(()=>{
+    chat.innerHTML+=`<div class="am bot">${ans[q]||'Хороший вопрос! Позвоните нам — агент ответит на любые вопросы по страхованию.'}</div>`;
+    chat.scrollTop=chat.scrollHeight;
+  },600);
+}
+function sendAI(){
+  const inp=document.getElementById('ai-input');
+  if(!inp)return;
+  const q=inp.value.trim();
+  if(!q)return;
+  askAI(q);inp.value='';
+}
+
+/* ── ИНИЦИАЛИЗАЦИЯ ── */
+window.addEventListener('load',function(){
+  // дата начала действия: сегодня + 8 дней
+  const d=document.getElementById('start-date');
+  if(d){
+    const now=new Date();
+    now.setDate(now.getDate()+8);
+    d.value=now.toISOString().split('T')[0];
+  }
+  // кнопка подтверждения активна
+});
+</script>
